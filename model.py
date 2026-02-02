@@ -10,8 +10,9 @@ class Testmodel(nn.Module):
         super().__init__()
         #彩色图片有3个通道
         self.seq = nn.Sequential(
-            nn.Conv2d(3, 20, 5),
-            # nn.Conv2d(20, 20, 5)
+            # nn.Conv2d(3, 20, 5),
+            # nn.MaxPool2d(2)
+            nn.AdaptiveAvgPool2d((256,256))
         )
 
     def forward(self, x):
@@ -33,5 +34,5 @@ if __name__ == '__main__':
     # print(output)
     # print(model)
     #模型可视化-把模型导出为onnx格式
-    torch.onnx.export(model, image, "test-conv2d.onnx")
+    # torch.onnx.export(model, image, "test-conv2d.onnx")
     print(output.shape)
