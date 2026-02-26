@@ -12,5 +12,8 @@ class Loss(nn.Moudle):
         predict_classes = predicts[:, 4:8]
         target_location = targets[:, 0:4]
         target_classes = targets[:, 4:8]
+        location_loss_value = self.location_loss(predic_location, target_location)
+        class_loss_value = self.class_loss(predict_classes, target_classes)
+        return location_loss_value + class_loss_value
 
 
